@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -20,6 +22,16 @@ public class Venda {
 	private Long id;
 	@Column(nullable=false)
 	private Date dataVenda;
+	
+	@JoinColumn
+	@ManyToOne
+	private Cliente cliente;
+	
+	@JoinColumn
+	@ManyToOne
+	private Usuario usuario;
+	
+	
 
 	public Long getId() {
 		return id;
