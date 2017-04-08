@@ -1,10 +1,15 @@
 package com.redmorf.model;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -14,13 +19,14 @@ public class Estoque {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "seq_estoque")
-	@SequenceGenerator(name = "seq_estoque",sequenceName = "seq_estoque",
-	initialValue = 1, allocationSize = 50)
+	@SequenceGenerator(name = "seq_estoque", sequenceName = "seq_estoque", initialValue = 1, allocationSize = 50)
 	private Integer id;
 	@Column(nullable = false)
 	private String nome;
-	@Column(nullable = false, unique = true)
-	
+	@JoinColumn
+	@OneToMany
+	private List<ProdutoEstoque> produtos;
+
 	public Integer getId() {
 		return id;
 	}
@@ -67,7 +73,5 @@ public class Estoque {
 			return false;
 		return true;
 	}
-	
-	
 
 }
