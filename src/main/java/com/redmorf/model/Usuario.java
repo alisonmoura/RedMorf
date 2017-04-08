@@ -21,15 +21,19 @@ public class Usuario {
 	private String email;
 	@Column(nullable = false)
 	private String senha;
+
 	public Long getId() {
 		return id;
 	}
+
 	public void setId(Long id) {
 		this.id = id;
 	}
+
 	public String getNome() {
 		return nome;
 	}
+
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
@@ -91,6 +95,11 @@ public class Usuario {
 		} else if (!senha.equals(other.senha))
 			return false;
 		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "Usuario [id=" + id + ", nome=" + nome + ", email=" + email + ", senha=" + senha + "]";
 	}
 
 }
