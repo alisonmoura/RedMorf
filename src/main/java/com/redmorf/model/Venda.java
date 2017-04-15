@@ -4,6 +4,8 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -32,7 +34,8 @@ public class Venda {
 	private Usuario usuario;
 
 	@Column(nullable = false)
-	private String status;
+	@Enumerated(value = EnumType.STRING)
+	private Status status;
 
 	public Long getId() {
 		return id;
@@ -66,11 +69,11 @@ public class Venda {
 		this.usuario = usuario;
 	}
 
-	public String getStatus() {
+	public Status getStatus() {
 		return status;
 	}
 
-	public void setStatus(String status) {
+	public void setStatus(Status status) {
 		this.status = status;
 	}
 
@@ -110,10 +113,7 @@ public class Venda {
 				return false;
 		} else if (!id.equals(other.id))
 			return false;
-		if (status == null) {
-			if (other.status != null)
-				return false;
-		} else if (!status.equals(other.status))
+		if (status != other.status)
 			return false;
 		if (usuario == null) {
 			if (other.usuario != null)
