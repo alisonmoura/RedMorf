@@ -31,6 +31,9 @@ public class Venda {
 	@ManyToOne
 	private Usuario usuario;
 
+	@Column(nullable = false)
+	private String status;
+
 	public Long getId() {
 		return id;
 	}
@@ -47,12 +50,39 @@ public class Venda {
 		this.dataVenda = dataVenda;
 	}
 
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + ((cliente == null) ? 0 : cliente.hashCode());
 		result = prime * result + ((dataVenda == null) ? 0 : dataVenda.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + ((status == null) ? 0 : status.hashCode());
+		result = prime * result + ((usuario == null) ? 0 : usuario.hashCode());
 		return result;
 	}
 
@@ -65,6 +95,11 @@ public class Venda {
 		if (getClass() != obj.getClass())
 			return false;
 		Venda other = (Venda) obj;
+		if (cliente == null) {
+			if (other.cliente != null)
+				return false;
+		} else if (!cliente.equals(other.cliente))
+			return false;
 		if (dataVenda == null) {
 			if (other.dataVenda != null)
 				return false;
@@ -74,6 +109,16 @@ public class Venda {
 			if (other.id != null)
 				return false;
 		} else if (!id.equals(other.id))
+			return false;
+		if (status == null) {
+			if (other.status != null)
+				return false;
+		} else if (!status.equals(other.status))
+			return false;
+		if (usuario == null) {
+			if (other.usuario != null)
+				return false;
+		} else if (!usuario.equals(other.usuario))
 			return false;
 		return true;
 	}
