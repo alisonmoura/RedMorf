@@ -1,5 +1,6 @@
 package com.redmorf;
 
+import java.util.Date;
 import java.util.List;
 
 import org.junit.Test;
@@ -12,34 +13,33 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.redmorf.model.Cliente;
-
-import com.redmorf.repository.ClienteRepository;
-
+import com.redmorf.model.Status;
+import com.redmorf.model.Usuario;
+import com.redmorf.model.Venda;
+import com.redmorf.repository.VendaRepository;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @DataJpaTest
 @AutoConfigureTestDatabase(connection = EmbeddedDatabaseConnection.H2, replace = Replace.ANY)
-
-public class ClienteRepositoryTeste {
+public class VendaRepositoryTeste {
+	
 	@Autowired
-	ClienteRepository clienteRepository;
+	VendaRepository vendaRepository;
 
 	@Test
 	public void deveSalvar() {
-		Cliente cliente = new Cliente();
-		cliente.setNome("joao silvino");
-		cliente.setEmail("joao@gmail.com");
-		cliente.setTelefone("33445566");
-		cliente.setCelular("999887766");
 		
+		Venda venda = new Venda();
+		venda.setStatus(Status.CONCLUIDO);
+		venda.setDataVenda(new Date());
 
-		clienteRepository.save(cliente);
+		vendaRepository.save(venda);
 
-		List<Cliente> findAll = clienteRepository.findAll();
-		for (Cliente cli : findAll) {
-			System.out.println(cli.toString());
+		List<Venda> findAll = vendaRepository.findAll();
+		for (Venda v: findAll) {
+			System.out.println(v.toString());
 		}
 	}
+
 }
