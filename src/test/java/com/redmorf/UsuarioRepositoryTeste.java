@@ -25,7 +25,7 @@ public class UsuarioRepositoryTeste {
 	UsuarioRepository usuarioRepository;
 
 	@Test
-	public void testeSalvar() {
+	public void deveSalvar() {
 		Usuario usuario = new Usuario();
 		usuario.setNome("Maria da Silva");
 		usuario.setEmail("maria@gmail.com");

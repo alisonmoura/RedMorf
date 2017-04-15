@@ -20,18 +20,16 @@ public class Venda {
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "seq_venda")
 	@SequenceGenerator(name = "seq_venda", sequenceName = "seq_venda", initialValue = 1, allocationSize = 50)
 	private Long id;
-	@Column(nullable=false)
+	@Column(nullable = false)
 	private Date dataVenda;
-	
-	@JoinColumn
+
+	@JoinColumn(nullable = true)
 	@ManyToOne
 	private Cliente cliente;
-	
-	@JoinColumn
+
+	@JoinColumn(nullable = true)
 	@ManyToOne
 	private Usuario usuario;
-	
-	
 
 	public Long getId() {
 		return id;
