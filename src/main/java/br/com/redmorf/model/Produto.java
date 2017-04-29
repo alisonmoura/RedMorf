@@ -24,43 +24,40 @@ public class Produto {
 	String nome;
 	@Column(nullable = false, unique = true)
 	String descricao;
-
 	@Column(nullable = false)
-	@Digits(integer=2, fraction=5)
+	@Digits(integer = 2, fraction = 5)
 	BigDecimal preco;
-	@Column(nullable = false)
-	Date data;
+
 	public Long getId() {
 		return id;
 	}
+
 	public void setId(Long id) {
 		this.id = id;
 	}
+
 	public String getNome() {
 		return nome;
 	}
+
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
+
 	public String getDescricao() {
 		return descricao;
 	}
+
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
+
 	public BigDecimal getPreco() {
 		return preco;
 	}
+
 	public void setPreco(BigDecimal preco) {
 		this.preco = preco;
 	}
-	public Date getData() {
-		return data;
-	}
-	public void setData(Date data) {
-		this.data = data;
-	}
-	
-	
 
 }

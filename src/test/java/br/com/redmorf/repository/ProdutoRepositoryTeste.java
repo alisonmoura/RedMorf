@@ -30,7 +30,6 @@ public class ProdutoRepositoryTeste {
 	@Test
 	public void deveSalvar() {
 		Produto produto = new Produto();
-		produto.setData(new Date());
 		produto.setDescricao("de boa qualidade");
 		produto.setNome("cadeira");
 		produto.setPreco(new BigDecimal(100));

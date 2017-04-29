@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head></h:head>
+<body>
+
+	<h1>Gerencia de Produtos</h1>
+
+	<h:form id="frmProduto">
+
+		<h:outputLabel for="inptNome">Nome:</h:outputLabel>
+		<h:inputText id="inptNome" value="#{produtoController.produto.nome}" />
+		<h:outputLabel for="inptDescricao">Descrição:</h:outputLabel>
+		<h:inputText id="inptDescricao"
+			value="#{produtoController.produto.descricao}" />
+		<h:outputLabel for="inptPreco">Preço:</h:outputLabel>
+		<h:inputText id="inptPreco" value="#{produtoController.produto.preco}"/>
+
+		<h:commandButton action="#{produtoController.salvar}" value="Salvar">
+			<f:ajax execute="frmProduto" render="frmProduto"></f:ajax>
+		</h:commandButton>
+
+		<h:commandButton rendered="#{produtoController.modoEdicao}"
+			action="#{produtoController.cancelar}" value="Cancelar">
+			<f:ajax render="frmProduto"></f:ajax>
+		</h:commandButton>
+
+		<h:dataTable value="#{produtoController.produtos}" var="p"
+			id="dtProdutos">
+			<h:column>
+				<f:facet name="header">Nome</f:facet>
+				#{p.nome}
+			</h:column>
+			<h:column>
+				<f:facet name="header">Descrição</f:facet>
+				#{p.descricao}
+			</h:column>
+			<h:column>
+				<f:facet name="header">Preço</f:facet>
+				#{p.preco}
+			</h:column>
+			<h:column>
+				<f:facet name="header">Ação</f:facet>
+				<h:commandButton action="#{produtoController.excluir(p)}"
+					value="Excluir" onclick="return window.confirm('Certeza?')">
+					<f:ajax render="frmProduto:dtProdutos" />
+				</h:commandButton>
+
+				<h:commandButton action="#{produtoController.editar(p)}"
+					value="Editar">
+					<f:ajax render="frmProduto" />
+				</h:commandButton>
+			</h:column>
+		</h:dataTable>
+	</h:form>
+</body>
+</html>

@@ -18,7 +18,7 @@ import br.com.redmorf.model.Usuario;
 import br.com.redmorf.repository.UsuarioRepository;
 
 @EnableWebSecurity
-public class SecurityConfig  extends WebSecurityConfigurerAdapter{
+public class SecurityConfig extends WebSecurityConfigurerAdapter{
 
 	@Autowired
 	private UsuarioRepository usuarioRepository ;
@@ -33,6 +33,8 @@ public class SecurityConfig  extends WebSecurityConfigurerAdapter{
 		.disable()
 		.authorizeRequests()
 		.antMatchers("/usuario.xhtml")
+		.hasRole("ADMIN")
+		.antMatchers("/produtos.xhtml")
 		.hasRole("ADMIN")
 		.anyRequest().authenticated();
 		

@@ -24,15 +24,12 @@ public class Venda {
 	private Long id;
 	@Column(nullable = false)
 	private Date dataVenda;
-
 	@JoinColumn(nullable = true)
 	@ManyToOne
 	private Cliente cliente;
-
 	@JoinColumn(nullable = true)
 	@ManyToOne
 	private Usuario usuario;
-
 	@Column(nullable = false)
 	@Enumerated(value = EnumType.STRING)
 	private Status status;
