@@ -11,11 +11,15 @@
 
 	<h:form id="frmUsuario">
 	
-		Nome: <h:inputText value="#{usuarioController.usuario.nome}" />
-		Login: <h:inputText value="#{usuarioController.usuario.login}" />
-		Senha: <h:inputText value="#{usuarioController.usuario.senha}" />
+		<h:outputLabel for="inptNome">Nome:</h:outputLabel><h:inputText id="inptNome" value="#{usuarioController.usuario.nome}" />
+		<h:outputLabel for="inptLogin">Login:</h:outputLabel><h:inputText id="inptLogin" value="#{usuarioController.usuario.login}" />
+		<h:outputLabel for="inptSenha">Senha:</h:outputLabel><h:inputText id="inptSenha" value="#{usuarioController.usuario.senha}" />
 		
-		Perfil: 
+		<h:outputLabel for="sltPerfil" value="Perfil" />
+		<h:selectOneMenu id="sltPerfil" value="#{usuarioController.usuario.perfil}">
+			<f:selectItem itemLabel="Administrador" itemValue="ADMIN" />
+			<f:selectItem itemLabel="Atendente" itemValue="ATENDENTE" />
+		</h:selectOneMenu>
 
 		<h:commandButton action="#{usuarioController.salvar}" value="Salvar">
 			<f:ajax execute="frmUsuario" render="frmUsuario"></f:ajax>
@@ -39,6 +43,10 @@
 			<h:column>
 				<f:facet name="header">Login</f:facet>
 				#{u.login}
+			</h:column>
+			<h:column>
+				<f:facet name="header">Perfil</f:facet>
+				#{u.perfil}
 			</h:column>
 			<h:column>
 				<f:facet name="header">Ação</f:facet>

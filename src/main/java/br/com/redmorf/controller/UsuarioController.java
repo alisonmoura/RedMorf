@@ -28,7 +28,6 @@ public class UsuarioController {
 	}
 
 	public void salvar() {
-
 		usuarioRepository.save(usuario);
 		if (!isModoEdicao())
 			usuarios.add(usuario);
@@ -41,8 +40,8 @@ public class UsuarioController {
 		usuarios.remove(usuario);
 	}
 
-	public void editar(Usuario cliente) {
-		setUsuario(cliente);
+	public void editar(Usuario usuario) {
+		setUsuario(usuario);
 		setModoEdicao(true);
 	}
 
