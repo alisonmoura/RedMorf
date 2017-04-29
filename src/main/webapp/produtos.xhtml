@@ -8,30 +8,42 @@
 <body>
 
 	<ui:include src="/menu.xhtml" />
+	<ui:include src="/imports.xhtml" />
 
 	<h1>Gerencia de Produtos</h1>
+	<hr></hr>
 
-	<h:form id="frmProduto">
+	<h:form id="frmProduto" styleClass="col col-sm-10">
 
-		<h:outputLabel for="inptNome">Nome:</h:outputLabel>
-		<h:inputText id="inptNome" value="#{produtoController.produto.nome}" />
-		<h:outputLabel for="inptDescricao">Descrição:</h:outputLabel>
-		<h:inputText id="inptDescricao"
-			value="#{produtoController.produto.descricao}" />
-		<h:outputLabel for="inptPreco">Preço:</h:outputLabel>
-		<h:inputText id="inptPreco" value="#{produtoController.produto.preco}" />
+		<div class="input-group col col-xs-12 col-sm-6 col-sm-offset-3">
+			<span class="input-group-addon">Nome</span>
+			<h:inputText id="inptNome" styleClass="form-control"
+				value="#{produtoController.produto.nome}" />
+		</div><br></br>
+		<div class="input-group col col-xs-12 col-sm-6 col-sm-offset-3">
+			<span class="input-group-addon">Descrição</span>
+			<h:inputText id="inptDescricao" styleClass="form-control"
+				value="#{produtoController.produto.descricao}" />
+		</div><br></br>
+		<div class="input-group col col-xs-12 col-sm-6 col-sm-offset-3">
+			<span class="input-group-addon">Preço</span>
+			<h:inputText id="inptPreco" styleClass="form-control"
+				value="#{produtoController.produto.preco}" />
+		</div><br></br>
+		<div class="input-group col col-xs-12 col-sm-6 col-sm-offset-3">
+			<h:commandButton action="#{produtoController.salvar}" value="Salvar"
+				styleClass="btn btn-primary">
+				<f:ajax execute="frmProduto" render="frmProduto"></f:ajax>
+			</h:commandButton>
 
-		<h:commandButton action="#{produtoController.salvar}" value="Salvar">
-			<f:ajax execute="frmProduto" render="frmProduto"></f:ajax>
-		</h:commandButton>
-
-		<h:commandButton rendered="#{produtoController.modoEdicao}"
-			action="#{produtoController.cancelar}" value="Cancelar">
-			<f:ajax render="frmProduto"></f:ajax>
-		</h:commandButton>
-
+			<h:commandButton rendered="#{produtoController.modoEdicao}"
+				action="#{produtoController.cancelar}" value="Cancelar"
+				styleClass="btn btn-danger">
+				<f:ajax render="frmProduto"></f:ajax>
+			</h:commandButton>
+		</div><br></br>
 		<h:dataTable value="#{produtoController.produtos}" var="p"
-			id="dtProdutos">
+			id="dtProdutos" styleClass="table">
 			<h:column>
 				<f:facet name="header">Nome</f:facet>
 				#{p.nome}
@@ -46,15 +58,19 @@
 			</h:column>
 			<h:column>
 				<f:facet name="header">Ação</f:facet>
-				<h:commandButton action="#{produtoController.excluir(p)}"
-					value="Excluir" onclick="return window.confirm('Certeza?')">
-					<f:ajax render="frmProduto:dtProdutos" />
-				</h:commandButton>
 
-				<h:commandButton action="#{produtoController.editar(p)}"
-					value="Editar">
-					<f:ajax render="frmProduto" />
-				</h:commandButton>
+				<div class="btn-group" role="group" aria-label="...">
+					<h:commandButton action="#{produtoController.excluir(p)}"
+						value="Excluir" onclick="return window.confirm('Certeza?')"
+						styleClass="btn btn-danger">
+						<f:ajax render="frmProduto:dtProdutos" />
+					</h:commandButton>
+
+					<h:commandButton action="#{produtoController.editar(p)}"
+						value="Editar" styleClass="btn btn-primary">
+						<f:ajax render="frmProduto" />
+					</h:commandButton>
+				</div>
 			</h:column>
 		</h:dataTable>
 	</h:form>
