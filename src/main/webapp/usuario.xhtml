@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head></h:head>
+<body>
+
+	<h1>Gerencia de Usuários</h1>
+
+	<h:form id="frmUsuario">
+	
+		Nome: <h:inputText value="#{usuarioController.usuario.nome}" />
+		Login: <h:inputText value="#{usuarioController.usuario.login}" />
+		Senha: <h:inputText value="#{usuarioController.usuario.senha}" />
+		
+		Perfil: 
+
+		<h:commandButton action="#{usuarioController.salvar}" value="Salvar">
+			<f:ajax execute="frmUsuario" render="frmUsuario"></f:ajax>
+		</h:commandButton>
+
+		<h:commandButton rendered="#{usuarioController.modoEdicao}"
+			action="#{usuarioController.cancelar}" value="Cancelar">
+			<f:ajax render="frmUsuario"></f:ajax>
+		</h:commandButton>
+
+		<h:dataTable value="#{usuarioController.usuarios}" var="u"
+			id="dtUsuarios">
+			<h:column>
+				<f:facet name="header">ID</f:facet>
+				#{u.id}
+			</h:column>
+			<h:column>
+				<f:facet name="header">Nome</f:facet>
+				#{u.nome}
+			</h:column>
+			<h:column>
+				<f:facet name="header">Login</f:facet>
+				#{u.login}
+			</h:column>
+			<h:column>
+				<f:facet name="header">Ação</f:facet>
+				<h:commandButton action="#{usuarioController.excluir(u)}"
+					value="Excluir" onclick="return window.confirm('Certeza?')">
+					<f:ajax render="frmUsuario:dtUsuarios" />
+				</h:commandButton>
+
+				<h:commandButton action="#{usuarioController.editar(u)}"
+					value="Editar">
+					<f:ajax render="frmUsuario" />
+				</h:commandButton>
+
+			</h:column>
+		</h:dataTable>
+	</h:form>
+</body>
+</html>
