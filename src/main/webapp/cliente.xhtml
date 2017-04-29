@@ -7,6 +7,8 @@
 <h:head></h:head>
 <body>
 
+	<ui:include src="/menu.xhtml" />
+
 	<h1>Cadastro de Cliente</h1>
 
 	<h:form id="frmCliente">
@@ -29,24 +31,24 @@
 				render="itContato dtContatos" />
 		</h:commandButton>
 
-<!-- 		<h:dataTable border="1" value="#{clienteController.cliente.contatos}" -->
-<!-- 			var="contato" id="dtContatos"> -->
+		<!-- 		<h:dataTable border="1" value="#{clienteController.cliente.contatos}" -->
+		<!-- 			var="contato" id="dtContatos"> -->
 
-<!-- 			<h:column> -->
-<!-- 						#{contato.tipoContato.descricao} -->
-<!-- 					</h:column> -->
-<!-- 			<h:column> -->
-<!-- 						#{contato.descricao} -->
-<!-- 					</h:column> -->
+		<!-- 			<h:column> -->
+		<!-- 						#{contato.tipoContato.descricao} -->
+		<!-- 					</h:column> -->
+		<!-- 			<h:column> -->
+		<!-- 						#{contato.descricao} -->
+		<!-- 					</h:column> -->
 
-<!-- 			<h:column> -->
-<!-- 				<h:commandButton -->
-<!-- 					action="#{clienteController.excluirContato(contato)}" value="-"> -->
-<!-- 					<f:ajax render="frmCliente:dtContatos" /> -->
-<!-- 				</h:commandButton> -->
-<!-- 			</h:column> -->
+		<!-- 			<h:column> -->
+		<!-- 				<h:commandButton -->
+		<!-- 					action="#{clienteController.excluirContato(contato)}" value="-"> -->
+		<!-- 					<f:ajax render="frmCliente:dtContatos" /> -->
+		<!-- 				</h:commandButton> -->
+		<!-- 			</h:column> -->
 
-<!-- 		</h:dataTable> -->
+		<!-- 		</h:dataTable> -->
 				
 				
 		Estado: <h:selectOneMenu value="#{clienteController.cliente.estado}"

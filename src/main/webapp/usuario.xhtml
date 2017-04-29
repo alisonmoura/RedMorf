@@ -7,16 +7,22 @@
 <h:head></h:head>
 <body>
 
+	<ui:include src="/menu.xhtml" />
+
 	<h1>Gerencia de Usuários</h1>
 
 	<h:form id="frmUsuario">
-	
-		<h:outputLabel for="inptNome">Nome:</h:outputLabel><h:inputText id="inptNome" value="#{usuarioController.usuario.nome}" />
-		<h:outputLabel for="inptLogin">Login:</h:outputLabel><h:inputText id="inptLogin" value="#{usuarioController.usuario.login}" />
-		<h:outputLabel for="inptSenha">Senha:</h:outputLabel><h:inputText id="inptSenha" value="#{usuarioController.usuario.senha}" />
-		
+
+		<h:outputLabel for="inptNome">Nome:</h:outputLabel>
+		<h:inputText id="inptNome" value="#{usuarioController.usuario.nome}" />
+		<h:outputLabel for="inptLogin">Login:</h:outputLabel>
+		<h:inputText id="inptLogin" value="#{usuarioController.usuario.login}" />
+		<h:outputLabel for="inptSenha">Senha:</h:outputLabel>
+		<h:inputText id="inptSenha" value="#{usuarioController.usuario.senha}" />
+
 		<h:outputLabel for="sltPerfil" value="Perfil" />
-		<h:selectOneMenu id="sltPerfil" value="#{usuarioController.usuario.perfil}">
+		<h:selectOneMenu id="sltPerfil"
+			value="#{usuarioController.usuario.perfil}">
 			<f:selectItem itemLabel="Administrador" itemValue="ADMIN" />
 			<f:selectItem itemLabel="Atendente" itemValue="ATENDENTE" />
 		</h:selectOneMenu>

@@ -7,6 +7,8 @@
 <h:head></h:head>
 <body>
 
+	<ui:include src="/menu.xhtml" />
+
 	<h1>Gerencia de Produtos</h1>
 
 	<h:form id="frmProduto">
@@ -17,7 +19,7 @@
 		<h:inputText id="inptDescricao"
 			value="#{produtoController.produto.descricao}" />
 		<h:outputLabel for="inptPreco">Preço:</h:outputLabel>
-		<h:inputText id="inptPreco" value="#{produtoController.produto.preco}"/>
+		<h:inputText id="inptPreco" value="#{produtoController.produto.preco}" />
 
 		<h:commandButton action="#{produtoController.salvar}" value="Salvar">
 			<f:ajax execute="frmProduto" render="frmProduto"></f:ajax>
