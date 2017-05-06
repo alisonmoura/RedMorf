@@ -13,33 +13,50 @@
 	<h1>Gerencia de Usuários</h1>
 	<hr></hr>
 
-	<h:form id="frmUsuario">
+	<h:form id="frmUsuario" styleClass="col col-sm-10">
 
-		<h:outputLabel for="inptNome">Nome:</h:outputLabel>
-		<h:inputText id="inptNome" value="#{usuarioController.usuario.nome}" />
-		<h:outputLabel for="inptLogin">Login:</h:outputLabel>
-		<h:inputText id="inptLogin" value="#{usuarioController.usuario.login}" />
-		<h:outputLabel for="inptSenha">Senha:</h:outputLabel>
-		<h:inputText id="inptSenha" value="#{usuarioController.usuario.senha}" />
-
-		<h:outputLabel for="sltPerfil" value="Perfil" />
-		<h:selectOneMenu id="sltPerfil"
-			value="#{usuarioController.usuario.perfil}">
-			<f:selectItem itemLabel="Administrador" itemValue="ADMIN" />
-			<f:selectItem itemLabel="Atendente" itemValue="ATENDENTE" />
-		</h:selectOneMenu>
-
-		<h:commandButton action="#{usuarioController.salvar}" value="Salvar">
-			<f:ajax execute="frmUsuario" render="frmUsuario"></f:ajax>
-		</h:commandButton>
-
-		<h:commandButton rendered="#{usuarioController.modoEdicao}"
-			action="#{usuarioController.cancelar}" value="Cancelar">
-			<f:ajax render="frmUsuario"></f:ajax>
-		</h:commandButton>
+		<div class="input-group col col-xs-12 col-sm-6 col-sm-offset-3">
+			<span class="input-group-addon">Nome</span>
+			<h:inputText id="inptNome" styleClass="form-control"
+				value="#{usuarioController.usuario.nome}" />
+		</div>
+		<br></br>
+		<div class="input-group col col-xs-12 col-sm-6 col-sm-offset-3">
+			<span class="input-group-addon">Login</span>
+			<h:inputText id="inptLogin" styleClass="form-control"
+				value="#{usuarioController.usuario.login}" />
+		</div>
+		<br></br>
+		<div class="input-group col col-xs-12 col-sm-6 col-sm-offset-3">
+			<span class="input-group-addon">Senha</span>
+			<h:inputSecret id="inptSenha" styleClass="form-control"
+				value="#{usuarioController.usuario.senha}" />
+		</div>
+		<br></br>
+		<div class="input-group col col-xs-12 col-sm-6 col-sm-offset-3">
+			<span class="input-group-addon">Perfil</span>
+			<h:selectOneMenu id="sltPerfil"
+				value="#{usuarioController.usuario.perfil}" styleClass="form-control">
+				<f:selectItem itemLabel="Administrador" itemValue="ADMIN" />
+				<f:selectItem itemLabel="Atendente" itemValue="ATENDENTE" />
+			</h:selectOneMenu>
+		</div>
+		<br></br>
+		<div class="input-group col col-xs-12 col-sm-6 col-sm-offset-3">
+			<h:commandButton action="#{usuarioController.salvar()}" value="Salvar"
+				styleClass="btn btn-primary">
+				<f:ajax execute="frmProduto" render="frmProduto"></f:ajax>
+			</h:commandButton>
+			<h:commandButton rendered="#{usuarioController.modoEdicao}"
+				action="#{usuarioController.cancelar()}" value="Cancelar"
+				styleClass="btn btn-danger">
+				<f:ajax render="frmUsuario"></f:ajax>
+			</h:commandButton>
+		</div>
+		<br></br>
 
 		<h:dataTable value="#{usuarioController.usuarios}" var="u"
-			id="dtUsuarios">
+			id="dtUsuarios" styleClass="table">
 			<h:column>
 				<f:facet name="header">ID</f:facet>
 				#{u.id}
@@ -57,17 +74,18 @@
 				#{u.perfil}
 			</h:column>
 			<h:column>
-				<f:facet name="header">Ação</f:facet>
-				<h:commandButton action="#{usuarioController.excluir(u)}"
-					value="Excluir" onclick="return window.confirm('Certeza?')">
-					<f:ajax render="frmUsuario:dtUsuarios" />
-				</h:commandButton>
-
-				<h:commandButton action="#{usuarioController.editar(u)}"
-					value="Editar">
-					<f:ajax render="frmUsuario" />
-				</h:commandButton>
-
+				<div class="btn-group">
+					<f:facet name="header">Ação</f:facet>
+					<h:commandButton action="#{usuarioController.excluir(u)}"
+						value="Excluir" onclick="return window.confirm('Certeza?')"
+						styleClass="btn btn-danger">
+						<f:ajax render="frmUsuario:dtUsuarios" />
+					</h:commandButton>
+					<h:commandButton action="#{usuarioController.editar(u)}"
+						value="Editar" styleClass="btn btn-primary">
+						<f:ajax render="frmUsuario" />
+					</h:commandButton>
+				</div>
 			</h:column>
 		</h:dataTable>
 	</h:form>

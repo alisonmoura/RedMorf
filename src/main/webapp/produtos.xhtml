@@ -19,17 +19,21 @@
 			<span class="input-group-addon">Nome</span>
 			<h:inputText id="inptNome" styleClass="form-control"
 				value="#{produtoController.produto.nome}" />
-		</div><br></br>
+		</div>
+		<br></br>
 		<div class="input-group col col-xs-12 col-sm-6 col-sm-offset-3">
 			<span class="input-group-addon">Descrição</span>
 			<h:inputText id="inptDescricao" styleClass="form-control"
 				value="#{produtoController.produto.descricao}" />
-		</div><br></br>
+		</div>
+		<br></br>
 		<div class="input-group col col-xs-12 col-sm-6 col-sm-offset-3">
-			<span class="input-group-addon">Preço</span>
+			<div class="input-group-addon">Preço R$</div>
 			<h:inputText id="inptPreco" styleClass="form-control"
 				value="#{produtoController.produto.preco}" />
-		</div><br></br>
+			<div class="input-group-addon">.00</div>
+		</div>
+		<br></br>
 		<div class="input-group col col-xs-12 col-sm-6 col-sm-offset-3">
 			<h:commandButton action="#{produtoController.salvar}" value="Salvar"
 				styleClass="btn btn-primary">
@@ -41,7 +45,8 @@
 				styleClass="btn btn-danger">
 				<f:ajax render="frmProduto"></f:ajax>
 			</h:commandButton>
-		</div><br></br>
+		</div>
+		<br></br>
 		<h:dataTable value="#{produtoController.produtos}" var="p"
 			id="dtProdutos" styleClass="table">
 			<h:column>
@@ -58,8 +63,7 @@
 			</h:column>
 			<h:column>
 				<f:facet name="header">Ação</f:facet>
-
-				<div class="btn-group" role="group" aria-label="...">
+				<div class="btn-group">
 					<h:commandButton action="#{produtoController.excluir(p)}"
 						value="Excluir" onclick="return window.confirm('Certeza?')"
 						styleClass="btn btn-danger">
