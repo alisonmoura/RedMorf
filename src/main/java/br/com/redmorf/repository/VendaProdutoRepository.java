@@ -8,8 +8,4 @@ import br.com.redmorf.model.VendaProduto;
 @Repository
 public interface VendaProdutoRepository extends JpaRepository<VendaProduto, Long>{
 	
-	
-	
-	
-
 }
