@@ -29,12 +29,4 @@ public class TipoContatoController {
 		setTipoContatos(tipoContatoRepository.findAll());
 	}
 
-	public List<TipoContato> getTipoContatos() {
-		return tipoContatos;
-	}
-
-	public void setTipoContatos(List<TipoContato> tipoContatos) {
-		this.tipoContatos = tipoContatos;
-	}
-
 }

@@ -13,6 +13,9 @@ import br.com.redmorf.model.Usuario;
 import br.com.redmorf.repository.ProdutoRepository;
 import br.com.redmorf.repository.UsuarioRepository;
 
+import lombok.Getter;
+import lombok.Setter;
+
 @Named
 @ViewScoped
 public class ProdutoController {
@@ -20,8 +23,16 @@ public class ProdutoController {
 	@Autowired
 	private ProdutoRepository produtoRepository;
 
+	@Getter
+	@Setter
 	private List<Produto> produtos;
+	
+	@Getter
+	@Setter
 	private Produto produto = new Produto();
+	
+	@Getter
+	@Setter
 	private boolean modoEdicao = false;
 
 	@PostConstruct
@@ -52,28 +63,8 @@ public class ProdutoController {
 		setModoEdicao(false);
 	}
 
-	public List<Produto> getProdutos() {
-		return produtos;
-	}
-
-	public void setProdutos(List<Produto> produtos) {
-		this.produtos = produtos;
-	}
-
-	public Produto getProduto() {
-		return produto;
-	}
-
-	public void setProduto(Produto produto) {
-		this.produto = produto;
-	}
-
 	public boolean isModoEdicao() {
 		return modoEdicao;
-	}
-
-	public void setModoEdicao(boolean modoEdicao) {
-		this.modoEdicao = modoEdicao;
 	}
 
 }

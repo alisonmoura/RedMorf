@@ -11,6 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import br.com.redmorf.model.Usuario;
 import br.com.redmorf.repository.UsuarioRepository;
 
+import lombok.Getter;
+import lombok.Setter;
+
 @Named
 @ViewScoped
 public class UsuarioController {
@@ -18,8 +21,16 @@ public class UsuarioController {
 	@Autowired
 	private UsuarioRepository usuarioRepository;
 
+	@Getter
+	@Setter
 	private List<Usuario> usuarios;
+	
+	@Getter
+	@Setter
 	private Usuario usuario = new Usuario();
+	
+	@Getter
+	@Setter
 	private boolean modoEdicao = false;
 
 	@PostConstruct
@@ -58,28 +69,8 @@ public class UsuarioController {
 		this.usuarioRepository = usuarioRepository;
 	}
 
-	public List<Usuario> getUsuarios() {
-		return usuarios;
-	}
-
-	public void setUsuarios(List<Usuario> usuarios) {
-		this.usuarios = usuarios;
-	}
-
-	public Usuario getUsuario() {
-		return usuario;
-	}
-
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
-	}
-
 	public boolean isModoEdicao() {
 		return modoEdicao;
-	}
-
-	public void setModoEdicao(boolean modoEdicao) {
-		this.modoEdicao = modoEdicao;
 	}
 
 }

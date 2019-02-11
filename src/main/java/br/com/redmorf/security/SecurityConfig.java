@@ -40,18 +40,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		
 	}
 	
-	 @Override
-	   protected UserDetailsService userDetailsService() {
+	@Override
+	protected UserDetailsService userDetailsService() {
+		
+		List<Usuario> usuarios = usuarioRepository.findAll();
 		 
-		 List<Usuario> usuarios = usuarioRepository.findAll();
+		List<UserDetails> users = new ArrayList<>();
 		 
-		 List<UserDetails> users = new ArrayList<>();
-		 
-		 for (Usuario u: usuarios){
-	      UserDetails user = new User(u.getLogin(), u.getSenha(), AuthorityUtils.commaSeparatedStringToAuthorityList("ROLE_"+u.getPerfil()));
-	      users.add(user);
-		 }
-	      
-	      return new InMemoryUserDetailsManager(users);
-	   }
+		for (Usuario u: usuarios){
+	      		UserDetails user = new User(u.getLogin(), u.getSenha(), AuthorityUtils.commaSeparatedStringToAuthorityList("ROLE_"+u.getPerfil()));
+		    	users.add(user);
+		}
+		return new InMemoryUserDetailsManager(users);
+	}
 }

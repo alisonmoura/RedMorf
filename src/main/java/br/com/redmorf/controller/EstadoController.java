@@ -27,13 +27,5 @@ public class EstadoController {
 	public void init() {
 		setEstados(estadoRepository.findAll());
 	}
-
-	public List<Estado> getEstados() {
-		return estados;
-	}
-
-	public void setEstados(List<Estado> estados) {
-		this.estados = estados;
-	}
-
+	
 }
