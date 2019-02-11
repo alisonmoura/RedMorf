@@ -82,36 +82,8 @@ public class ClienteController {
 		this.clienteRepository = clienteRepository;
 	}
 
-	public List<Cliente> getClientes() {
-		return clientes;
-	}
-
-	public void setClientes(List<Cliente> clientes) {
-		this.clientes = clientes;
-	}
-
-	public Cliente getCliente() {
-		return cliente;
-	}
-
-	public void setCliente(Cliente cliente) {
-		this.cliente = cliente;
-	}
-
 	public boolean isModoEdicao() {
 		return modoEdicao;
-	}
-
-	public void setModoEdicao(boolean modoEdicao) {
-		this.modoEdicao = modoEdicao;
-	}
-
-	public Contato getContato() {
-		return contato;
-	}
-
-	public void setContato(Contato contato) {
-		this.contato = contato;
 	}
 
 }
